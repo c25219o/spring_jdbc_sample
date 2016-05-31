@@ -51,13 +51,14 @@ public class InsertGoodsController {
 //            model.addAttribute("count", count);
             attributes.addFlashAttribute("count", count);
             session.removeAttribute("insertGoods");
-            session.invalidate();
+            System.out.println(session.getAttribute("insertGoods"));
             return "redirect:/insertComp.html";
         } catch(DataAccessException e){
             e.printStackTrace();
             System.out.println("データの登録に失敗！");
             session.removeAttribute("insertGoods");
-            session.invalidate();
+            System.out.println(session.getAttribute("insertGoods"));
+//            session.invalidate();
             return "redirect:/insertError.html";
         } finally {
             //DBに登録したので入力したデータをセッションから削除
